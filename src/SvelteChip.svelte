@@ -1,6 +1,6 @@
 <script lang="ts">
-import Chips from "./Chips.svelte";
-import Input from "./Input.svelte";
+import Chips from './Chips.svelte';
+import Input from './Input.svelte';
 </script>
     
 <main>

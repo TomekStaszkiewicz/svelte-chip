@@ -1,11 +1,11 @@
 <script lang="ts">
 import Chip from './Chip.svelte';
-import { chipsStore } from "./store";
-import type { IChip } from "./types";
+import { chipsStore } from './store';
+import type { IChip } from './types';
 
 let chips: IChip[] = [];
 chipsStore.subscribe((newChips) => {
-    chips = newChips;
+  chips = newChips;
 });
 </script>
 <div class="chips-wrapper">

@@ -1,9 +1,7 @@
 <script lang="ts">
-import { IChip } from "./types";
-import Button from '@smui/button';
+import type { IChip } from './types';
 
 export let chip: IChip;
-
 </script>
 
 <span 
@@ -12,8 +10,6 @@ export let chip: IChip;
     >
     {chip.tag}
 </span>
-<Button />
-
 
 <style>
     .default_chip {
