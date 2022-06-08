@@ -1,10 +1,6 @@
 <script lang="ts">
-import Input from "./Input.svelte";
-let inputValue = 'aaa';
+import SvelteChip from "./SvelteChip.svelte";
 
 </script>
+<SvelteChip />
 
-<main>
-	<Input bind:inputValue={inputValue} />
-	<h1>{inputValue}</h1>
-</main>
