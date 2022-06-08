@@ -1,12 +1,12 @@
 <script lang="ts">
-    import {inputStore, addChip} from './store';
+    import { inputStore, addChip } from './store';
     let currentInput = '';
     inputStore.subscribe((newInput) => {
-        currentInput = newInput;
+      currentInput = newInput;
     });
     const onInputChange = (event) => {
-        inputStore.set(event.target.value)
-    }
+      inputStore.set(event.target.value);
+    };
 </script>
 
 <input class="chipInput" bind:value={currentInput} on:input={onInputChange} on:change={addChip} />
