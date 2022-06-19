@@ -8,7 +8,15 @@ export const chipsStore = writable<IChip[]>([]);
 export const addChip = () => {
   const newChipValue = get(inputStore);
   inputStore.set('');
+
+  // do not allow to duplicate values
+  if(get(chipsStore).some(({ tag }) => tag === newChipValue)) return;
+
   chipsStore.update((prevValue) => [...prevValue, createChip(newChipValue, prevValue.length)]);
+};
+
+export const deleteChip = (tag: string) => {
+  chipsStore.update((prevValue) => prevValue.filter((chip) => chip.tag !== tag));
 };
 
 const createChip = (tag: string, index: number): IChip => ({
