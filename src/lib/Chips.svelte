@@ -1,19 +1,17 @@
 <script lang="ts">
 import Chip from './Chip.svelte';
-import { chipsStore } from './store';
-import type { IChip } from './types';
+import { getStore } from './store';
 
 export let deletable = true;
+export let id: string;
 
-let chips: IChip[] = [];
-chipsStore.subscribe((newChips) => {
-  chips = newChips;
-});
+const {chipsStore} = getStore(id);
+
 </script>
 
 <div class="chips-wrapper">
-{#each chips as chip}
-    <Chip {chip} deletable={deletable} />
+{#each $chipsStore as chip}
+    <Chip {chip} deletable={deletable} id={id} />
 {/each}
 </div>
 

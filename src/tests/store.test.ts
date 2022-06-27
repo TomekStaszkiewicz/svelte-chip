@@ -1,6 +1,8 @@
 import { get } from 'svelte/store';
 
-import * as store from '../lib/store';
+import { getStore } from '../lib/store';
+
+const store = getStore('default');
 
 function addChip(tag: string) {
   store.inputStore.set(tag);
@@ -44,5 +46,44 @@ describe('store', () => {
     store.deleteChip(newChipTag);
 
     expect(get(store.chipsStore)).toHaveLength(0);
+  });
+
+  describe('multiple stores', () => {
+    
+    it('adding values', () => {
+      const store1 = getStore('store1');
+      const store2 = getStore('store2');
+
+      store1.inputStore.set('new value');
+      store1.addChip();
+
+      store2.inputStore.set('another value');
+      store2.addChip();
+
+      expect(get(store1.chipsStore)).toHaveLength(1);
+      expect(get(store1.chipsStore)[0].tag).toEqual('new value');
+
+      expect(get(store2.chipsStore)).toHaveLength(1);
+      expect(get(store2.chipsStore)[0].tag).toEqual('another value');
+    });
+
+    it('deleting values', () => {
+      const store1 = getStore('store1');
+      const store2 = getStore('store2');
+
+      store1.inputStore.set('new value');
+      store1.addChip();
+
+      store2.inputStore.set('another value');
+      store2.addChip();
+
+      store1.deleteChip('new value');
+
+
+      expect(get(store1.chipsStore)).toHaveLength(0);
+
+      expect(get(store2.chipsStore)).toHaveLength(1);
+      expect(get(store2.chipsStore)[0].tag).toEqual('another value');
+    });
   });
 });
