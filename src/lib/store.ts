@@ -1,23 +1,38 @@
 import { get, writable } from 'svelte/store';
 
-import type { IChip } from './types';
+import type { IChip, Stores } from './types';
 
-export const inputStore = writable('');
-export const chipsStore = writable<IChip[]>([]);
+const storeMap = new Map<string, Stores>([]);
 
-export const addChip = () => {
-  const newChipValue = get(inputStore);
-  inputStore.set('');
-
-  // do not allow to duplicate values
-  if(get(chipsStore).some(({ tag }) => tag === newChipValue)) return;
-
-  chipsStore.update((prevValue) => [...prevValue, createChip(newChipValue, prevValue.length)]);
+export const getStore = (id: string) => {
+  if(!storeMap.has(id)) {
+    storeMap.set(id, {
+      chipsStore: writable<IChip[]>([]),
+      inputStore: writable('')
+    });
+  }
+  const { chipsStore, inputStore } = storeMap.get(id) as Stores; 
+  const addChip = () => {
+    const newChipValue = get(inputStore);
+    inputStore.set('');
+  
+    // do not allow to duplicate values
+    if(get(chipsStore).some(({ tag }) => tag === newChipValue)) return;
+  
+    chipsStore.update((prevValue) => [...prevValue, createChip(newChipValue, prevValue.length)]);
+  };
+  
+  const deleteChip = (tag: string) => {
+    chipsStore.update((prevValue) => prevValue.filter((chip) => chip.tag !== tag));
+  };
+  return {
+    chipsStore,
+    inputStore,
+    addChip,
+    deleteChip
+  };
 };
 
-export const deleteChip = (tag: string) => {
-  chipsStore.update((prevValue) => prevValue.filter((chip) => chip.tag !== tag));
-};
 
 const createChip = (tag: string, index: number): IChip => ({
   tag,

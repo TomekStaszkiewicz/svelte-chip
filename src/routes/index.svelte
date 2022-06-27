@@ -8,4 +8,8 @@
 
 <section>
 	<SvelteChip />
+	<SvelteChip id="another" />
+	<SvelteChip id="more" />
+
+
 </section>

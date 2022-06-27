@@ -1,8 +1,11 @@
 <script lang="ts">
-import { deleteChip } from './store';
+import { getStore } from './store';
 import type { IChip } from './types';
 export let deletable = true;
 export let chip: IChip;
+export let id: string;
+
+const {deleteChip} = getStore(id);
 
 </script>
 
