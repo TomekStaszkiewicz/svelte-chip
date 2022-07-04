@@ -5,32 +5,51 @@
 
 </script>
 <Rwd>
-	<nav slot="xl">
-		<a href="/">Home</a>
-		<a href="examples">Examples</a>
-	</nav>
-	<nav class="nav-small" slot="sm">
-		<a href="/"><Icon icon="akar-icons:github-fill" /></a>
-		<a href="examples">🔍</a>
-	</nav>
+	<div slot="xl" class="wrapper-big">
+		<nav class="nav-big">
+			<a href="#home">Svelte-chip</a>
+			<a href="#gettingStarted">Getting started</a>
+			<a href="#basicUsage">Basic usage</a>
+			<a href="#customInput">Custom input</a>
+			<a href="#customChip">Custom chip</a>
+		</nav>
+		<main>
+			<slot />
+			<footer>
+				<a href="https://github.com/TomekStaszkiewicz/svelte-chip"><Icon icon="akar-icons:github-fill" /></a>
+			</footer>
+		</main>
+	</div>
+	<div slot="sm" class="wrapper-small">
+		<main>
+			<slot />
+			<footer>
+				<a href="https://github.com/TomekStaszkiewicz/svelte-chip"><Icon icon="akar-icons:github-fill" /></a>
+			</footer>
+		</main>
+	</div>
 </Rwd>
-<main>
-	<slot />
-</main>
 
-<footer>
-	<p>Visit <a href="https://github.com/TomekStaszkiewicz/svelte-chip"><Icon icon="akar-icons:github-fill" /></a> to learn SvelteKit</p>
-</footer>
 
 <style>
-	nav {
+	.nav-big {
+		display: flex;
+		flex-direction: column;
+		width: 25%;
+		justify-content: flex-start;
+		padding-top: 30px;
+		background-color: var(--accent-color);
+		color: var(--secondary-color);
+	}
+
+	.nav-big a {
+		padding: 20px;
 		display: flex;
 		align-items: center;
-		justify-content: space-evenly;
-		padding: 30px;
-		position: sticky;
-    	top: 0;
+		justify-content: center;
+		color: var(--primary-color);
 	}
+
 	nav a {
 		font-weight: 800;
     	font-size: larger;
@@ -38,6 +57,11 @@
 
 	.nav-small a {
 		font-size: 50px;
+	}
+
+	.wrapper-big {
+		display: flex;
+		min-height: 100vh;
 	}
 
 	main {
@@ -57,6 +81,7 @@
 		justify-content: center;
 		align-items: center;
 		padding: 40px;
+		font-size: 45px;
 	}
 
 	footer a {
@@ -68,4 +93,5 @@
 			padding: 40px 0;
 		}
 	}
+
 </style>
