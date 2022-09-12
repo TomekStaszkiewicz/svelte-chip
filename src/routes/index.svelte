@@ -1,15 +1,34 @@
 <script context="module" lang="ts">
+	import Section from './_components/Section.svelte';
+	import "carbon-components-svelte/css/all.css";
+	import GettingStarted from './_components/GettingStarted.svelte';
+	import BasicUsage from './_components/BasicUsage.svelte';
+	import CustomInput from './_components/CustomInput.svelte';
+	import CustomChip from './_components/CustomChip.svelte';
+
 	export const prerender = true;
 </script>
 
-<script lang="ts">
-	import SvelteChip from '$lib/SvelteChip.svelte';
-</script>
-
-<section>
-	<SvelteChip />
-	<SvelteChip id="another" />
-	<SvelteChip id="more" />
+<svelte:head>
+	<title>Svelte-chip</title>
+</svelte:head>
 
 
-</section>
+<h1>Svelte-chip</h1>
+<Section id="gettingStarted">
+	<GettingStarted />
+</Section>
+
+<Section id="basicUsage">
+	<BasicUsage />
+</Section>
+
+<Section id="customInput">
+	<CustomInput />
+</Section>
+
+
+<Section id="customChip">
+	<CustomChip />
+</Section>
+

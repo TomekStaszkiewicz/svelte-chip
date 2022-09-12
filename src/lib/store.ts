@@ -12,8 +12,9 @@ export const getStore = (id: string) => {
     });
   }
   const { chipsStore, inputStore } = storeMap.get(id) as Stores; 
-  const addChip = () => {
-    const newChipValue = get(inputStore);
+  const addChip = (newVal?: string) => {
+    const shouldUseDirectValue = newVal && typeof newVal === 'string';
+    const newChipValue = shouldUseDirectValue ? newVal : get(inputStore);
     inputStore.set('');
   
     // do not allow to duplicate values

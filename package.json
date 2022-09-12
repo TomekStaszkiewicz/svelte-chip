@@ -13,12 +13,14 @@
 		"test": "jest src/tests"
 	},
 	"devDependencies": {
+		"@iconify/svelte": "^2.2.1",
 		"@sveltejs/adapter-auto": "next",
 		"@sveltejs/kit": "next",
 		"@types/cookie": "^0.5.1",
 		"@types/jest": "^28.1.2",
 		"@typescript-eslint/eslint-plugin": "^5.27.0",
 		"@typescript-eslint/parser": "^5.27.0",
+		"carbon-components-svelte": "^0.70.6",
 		"eslint": "^8.16.0",
 		"eslint-import-resolver-typescript": "^2.7.1",
 		"eslint-plugin-import": "^2.26.0",

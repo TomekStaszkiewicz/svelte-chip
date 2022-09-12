@@ -30,6 +30,15 @@ describe('store', () => {
     expect(get(store.inputStore)).toEqual('');  
   });
 
+  it('allows to add a new chip directly(no input store)', () => {
+    store.addChip('some chip');
+    store.addChip('another chip');
+
+    expect(get(store.chipsStore)).toHaveLength(2);
+    expect(get(store.chipsStore).some(({ tag }) => tag === 'some chip')).toBeTruthy();
+    expect(get(store.chipsStore).some(({ tag }) => tag === 'another chip')).toBeTruthy();
+  });
+
   it('does not add chip if one already exists', () => {
     const newChipTag = 'a new chip';
     addChip(newChipTag);

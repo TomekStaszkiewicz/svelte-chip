@@ -1,16 +1,68 @@
 <script lang="ts">
 	import '../app.css';
+	import Rwd from './_components/RWD.svelte';
+	import Icon from '@iconify/svelte';
+
 </script>
+<Rwd>
+	<div slot="xl" class="wrapper-big">
+		<nav class="nav-big">
+			<a href="#gettingStarted">Getting started</a>
+			<a href="#basicUsage">Basic usage</a>
+			<a href="#customInput">Custom input</a>
+			<a href="#customChip">Custom chip</a>
+		</nav>
+		<main>
+			<slot />
+			<footer>
+				<a href="https://github.com/TomekStaszkiewicz/svelte-chip"><Icon icon="akar-icons:github-fill" /></a>
+			</footer>
+		</main>
+	</div>
+	<div slot="sm" class="wrapper-small">
+		<main>
+			<slot />
+			<footer>
+				<a href="https://github.com/TomekStaszkiewicz/svelte-chip"><Icon icon="akar-icons:github-fill" /></a>
+			</footer>
+		</main>
+	</div>
+</Rwd>
 
-<main>
-	<slot />
-</main>
-
-<footer>
-	<p>visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p>
-</footer>
 
 <style>
+	.nav-big {
+		display: flex;
+		flex-direction: column;
+		width: 25%;
+		justify-content: flex-start;
+		padding-top: 30px;
+		background-color: var(--accent-color);
+		color: var(--secondary-color);
+	}
+
+	.nav-big a {
+		padding: 20px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: var(--primary-color);
+	}
+
+	nav a {
+		font-weight: 800;
+    	font-size: larger;
+	}
+
+	.nav-small a {
+		font-size: 50px;
+	}
+
+	.wrapper-big {
+		display: flex;
+		min-height: 100vh;
+	}
+
 	main {
 		flex: 1;
 		display: flex;
@@ -28,6 +80,7 @@
 		justify-content: center;
 		align-items: center;
 		padding: 40px;
+		font-size: 45px;
 	}
 
 	footer a {
@@ -39,4 +92,5 @@
 			padding: 40px 0;
 		}
 	}
+
 </style>
