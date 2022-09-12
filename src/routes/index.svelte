@@ -1,30 +1,12 @@
 <script context="module" lang="ts">
-	import SvelteChip from "$lib/SvelteChip.svelte";
 	import Section from './_components/Section.svelte';
+	import "carbon-components-svelte/css/all.css";
 	import GettingStarted from './_components/GettingStarted.svelte';
-	
+	import BasicUsage from './_components/BasicUsage.svelte';
+	import CustomInput from './_components/CustomInput.svelte';
+	import CustomChip from './_components/CustomChip.svelte';
+
 	export const prerender = true;
-	const code = `
-		<SvelteChip />
-	`;
-
-</script>
-
-<script lang="ts">
-	import { getStore } from '$lib/store';
-
-	const {chipsStore: chipsStore1, addChip: addChip1} = getStore('customInput');
-	const {chipsStore: chipsStore2} = getStore('customChips');
-
-	let currentValue = '';
-	const onChangeInput = (e) => {
-		currentValue = e.target.value + ' ';
-	}
-
-	const onAddChip = () => {
-		addChip1(currentValue);
-		currentValue = '';
-	}
 </script>
 
 <svelte:head>
@@ -32,45 +14,21 @@
 </svelte:head>
 
 
-<Section id="home">
-	<h1>Svelte-chip</h1>
-	<code lang="svelte">
-		{@html code}
-	</code>
-</Section>
-
+<h1>Svelte-chip</h1>
 <Section id="gettingStarted">
 	<GettingStarted />
 </Section>
 
 <Section id="basicUsage">
-	<h2>Basic usage</h2>
-	<SvelteChip />
+	<BasicUsage />
 </Section>
 
 <Section id="customInput">
-	<h2>Custom input renderer</h2>
-	<SvelteChip id="customInput">
-		<input slot="input" bind:value={currentValue} on:input={onChangeInput} on:change={onAddChip} />
-	</SvelteChip>
+	<CustomInput />
 </Section>
 
 
 <Section id="customChip">
-	<h2>Custom chip renderer</h2>
-	<SvelteChip id="customChips">
-		<table slot="chips">
-			<tr>
-				<th>Tag</th>
-				<th>Color</th>
-			</tr>
-			{#each $chipsStore2 as chip}
-				<tr>
-					<td>{chip.tag}</td>
-					<td>{chip.bgColor}</td>
-				</tr>
-			{/each}
-		</table>
-	</SvelteChip>
+	<CustomChip />
 </Section>
 

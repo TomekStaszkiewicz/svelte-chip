@@ -7,7 +7,6 @@
 <Rwd>
 	<div slot="xl" class="wrapper-big">
 		<nav class="nav-big">
-			<a href="#home">Svelte-chip</a>
 			<a href="#gettingStarted">Getting started</a>
 			<a href="#basicUsage">Basic usage</a>
 			<a href="#customInput">Custom input</a>

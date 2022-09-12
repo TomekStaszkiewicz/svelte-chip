@@ -1,10 +1,7 @@
-1. Install library
-<code>yarn install svelte-chip</code>
-<code>npm install svelte-chip</code>
+<script lang="ts">
+    import CodeSnippet from 'carbon-components-svelte/src/CodeSnippet/CodeSnippet.svelte';
+</script>
 
-2. Import and use svelte-chip in your component
-<code>
-    import SvelteChip from 'svelte-chip';
-
-    {"<SvelteChip />"}
-</code>
+<h2>Installation</h2>
+<CodeSnippet code="yarn install svelte-chip" />
+<CodeSnippet code="npm install svelte-chip" />
