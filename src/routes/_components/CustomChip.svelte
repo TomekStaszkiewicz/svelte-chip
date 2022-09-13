@@ -3,6 +3,7 @@
     import SvelteChip from "$lib/SvelteChip.svelte";
 	import { getStore } from '$lib/store';
 	import CustomInput from './CustomInput.svelte';
+import { customChip } from './examples.const';
 	
     const {chipsStore: chipsStore2} = getStore('customChips');
 	const {chipsStore: chipsStore1, addChip: addChip1} = getStore('customInput');
@@ -17,29 +18,7 @@
 	}
 </script>
 	<h2>Custom Chip renderer</h2>
-    <CodeSnippet type="multi" expanded code={`
-    <script lang="ts">
-	import SvelteChip, { getStore } from '$lib/store';
-	import CustomInput from './_components/CustomInput.svelte';
-
-	const {chipsStore: chipsStore2} = getStore('customChips');
-
-    </script>
-    <SvelteChip id="customChips">
-		<table slot="chips">
-			<tr>
-				<th>Tag</th>
-				<th>Color</th>
-			</tr>
-			{#each $chipsStore2 as chip}
-				<tr>
-					<td>{chip.tag}</td>
-					<td>{chip.bgColor}</td>
-				</tr>
-			{/each}
-		</table>
-	</SvelteChip>
-    `} />
+    <CodeSnippet type="multi" expanded code={customChip} />
 	<SvelteChip id="customChips">
 		<table slot="chips">
 			<tr>
