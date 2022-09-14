@@ -1,11 +1,14 @@
 <script lang="ts">
-import { getStore } from './store';
-import type { IChip } from './types';
+import { getContext } from 'svelte';
+import { getTag } from './context.const';
+
+import type { StoreContext, IChip } from './types';
+
 export let deletable = true;
 export let chip: IChip;
 export let id: string;
 
-const {deleteChip} = getStore(id);
+const {deleteChip} = getContext<StoreContext>(getTag(id));
 
 </script>
 

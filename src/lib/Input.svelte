@@ -1,8 +1,11 @@
 <script lang="ts">
-    import { getStore } from './store';
+import { getContext } from 'svelte';
+import { getTag } from './context.const';
+import type { StoreContext } from './types';
+    
     export let id: string;
 
-    const {inputStore, addChip} = getStore(id);
+    const {inputStore, addChip} = getContext<StoreContext>(getTag(id));
     const onInputChange = (event) => {
       inputStore.set(event.target.value);
     };

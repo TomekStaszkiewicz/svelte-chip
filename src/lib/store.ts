@@ -1,17 +1,11 @@
 import { get, writable } from 'svelte/store';
 
-import type { IChip, Stores } from './types';
+import type { IChip } from './types';
 
-const storeMap = new Map<string, Stores>([]);
+export const getStore = () => {
+  const chipsStore = writable<IChip[]>([]);
+  const inputStore = writable('');
 
-export const getStore = (id: string) => {
-  if(!storeMap.has(id)) {
-    storeMap.set(id, {
-      chipsStore: writable<IChip[]>([]),
-      inputStore: writable('')
-    });
-  }
-  const { chipsStore, inputStore } = storeMap.get(id) as Stores; 
   const addChip = (newVal?: string) => {
     const shouldUseDirectValue = newVal && typeof newVal === 'string';
     const newChipValue = shouldUseDirectValue ? newVal : get(inputStore);
