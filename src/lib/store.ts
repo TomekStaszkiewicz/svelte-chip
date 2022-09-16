@@ -1,10 +1,11 @@
 import { get, writable } from 'svelte/store';
 
-import type { IChip } from './types';
+import type { Color, IChip, StoreConfig } from './types';
 
-export const getStore = () => {
+export const getStore = (config: StoreConfig) => {
   const chipsStore = writable<IChip[]>([]);
   const inputStore = writable('');
+  const colors = config.colors.length ? config.colors : defaultColors;
 
   const addChip = (newVal?: string) => {
     const shouldUseDirectValue = newVal && typeof newVal === 'string';
@@ -14,7 +15,7 @@ export const getStore = () => {
     // do not allow to duplicate values
     if(get(chipsStore).some(({ tag }) => tag === newChipValue)) return;
   
-    chipsStore.update((prevValue) => [...prevValue, createChip(newChipValue, prevValue.length)]);
+    chipsStore.update((prevValue) => [...prevValue, createChip(newChipValue, prevValue.length, colors)]);
   };
   
   const deleteChip = (tag: string) => {
@@ -29,19 +30,19 @@ export const getStore = () => {
 };
 
 
-const createChip = (tag: string, index: number): IChip => ({
+const createChip = (tag: string, index: number, colors: Color[]): IChip => ({
   tag,
-  bgColor: getColor(index)
+  bgColor: getColor(index, colors)
 });
 
-const getColor = (index: number) => {
+const getColor = (index: number, colors: Color[]) => {
   const id = index % colors.length;
 
   return colors[id];
 };
 
 // find some colors
-const colors = [
+const defaultColors = [
   'red',
   'blue',
   'yellow',

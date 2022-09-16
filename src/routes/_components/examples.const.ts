@@ -47,3 +47,14 @@ export const basicUsage = `
 </script>
 <SvelteChip />
 `;
+
+export const customColors = `
+<script lang="ts">
+   import SvelteChip from "$lib/SvelteChip.svelte";
+
+    const customColors = ['green', 'grey', 'black', 'white'];
+</script>
+
+
+<SvelteChip id="customColors" colors={customColors} />
+`;

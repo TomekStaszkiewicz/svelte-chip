@@ -5,6 +5,7 @@
 	import BasicUsage from './_components/BasicUsage.svelte';
 	import CustomInput from './_components/CustomInput.svelte';
 	import CustomChip from './_components/CustomChip.svelte';
+    import CustomColors from './_components/CustomColors.svelte';
 
 	export const prerender = true;
 </script>
@@ -32,3 +33,7 @@
 	<CustomChip />
 </Section>
 
+
+<Section id="customColors">
+	<CustomColors />
+</Section>

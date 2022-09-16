@@ -11,6 +11,7 @@
 			<a href="#basicUsage">Basic usage</a>
 			<a href="#customInput">Custom input</a>
 			<a href="#customChip">Custom chip</a>
+			<a href="#customColors">Custom colors</a>
 		</nav>
 		<main>
 			<slot />
